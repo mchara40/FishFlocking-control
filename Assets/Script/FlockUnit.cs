@@ -58,7 +58,7 @@ public class FlockUnit : MonoBehaviour
     bool firstframe2 = true;
     bool firstframe3 = true;
     Vector3 PathVector;
-
+  
     public static Stopwatch m_stopwatch = new Stopwatch();
     private void Awake()
     {
@@ -87,7 +87,7 @@ public class FlockUnit : MonoBehaviour
 
     void Update()
     {
-
+        
         counterframe1++;
         counterframe2++;
         counterframe3++;
@@ -113,14 +113,15 @@ public class FlockUnit : MonoBehaviour
         if (firstframe1 || counterframe1 % 50 == 0)
         {
            
-            var startTime = DateTime.Now;
+            //var startTime = DateTime.Now;
             cohesionNeighbours = FindNeighbours(tree, assignedFlock.cohesionDistance);
             
             firstframe1 = false;
-            var elapsed = (DateTime.Now - startTime).Milliseconds;
+            //var elapsed = (DateTime.Now - startTime).Milliseconds;
+
+
+            //UnityEngine.Debug.Log("Time : " + elapsed);
            
-           
-            UnityEngine.Debug.Log("Time : " + elapsed);
         }
         if (firstframe2 || counterframe2 % 50 == 0)
         {
@@ -135,6 +136,7 @@ public class FlockUnit : MonoBehaviour
             avoidanceNeighbours = FindNeighbours(tree, assignedFlock.avoidanceDistance);
             firstframe3 = false;
         }
+       
         
         // FindNeighbours();
         CalculateSpeed();
@@ -176,7 +178,9 @@ public class FlockUnit : MonoBehaviour
         {
             var resultIndices2 = new List<int>();
             resultIndices2 = resultIndices.GetRange(0,40);
+           
             return resultIndices2;
+
         }
          return resultIndices;
 
